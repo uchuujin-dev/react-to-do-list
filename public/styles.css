@@ -108,7 +108,7 @@ li {
   float: right;
   margin-right: 1px;
   color: #4d686e;
-  border: none;
+  border: black solid;
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -157,4 +157,6 @@ h2 {
   align-items: left;
   justify-content: left;
   margin: 0;
+  background-color: "#4d686e";
+  margin-top: 0.4rem;
 }

@@ -4,43 +4,52 @@ import CheckBoxOutlineBlankTwoToneIcon from "@mui/icons-material/CheckBoxOutline
 import CheckBoxTwoToneIcon from "@mui/icons-material/CheckBoxTwoTone";
 
 function ToDoItem(props) {
-  const [isStriked, setIsStriked] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
-  function handleClick() {
-    setIsStriked((prev) => !prev);
-  }
   return (
-    <div onClick={handleClick}>
-      <li
-        onMouseOver={() => setIsHover(true)}
-        onMouseOut={() => setIsHover(false)}
-        style={{
-          textDecoration: isStriked && "line-through",
-          color: isStriked && "#7e8180"
+    <div
+      onClick={() => {
+        props.setIsStriked(props.id);
+      }}
+    >
+      <article
+        onMouseEnter={() => {
+          setIsHover(true);
+        }}
+        onMouseLeave={() => {
+          setIsHover(false);
         }}
       >
-        {isStriked ? (
-          <CheckBoxTwoToneIcon fontSize="medium" className="checkBox" />
-        ) : (
-          <CheckBoxOutlineBlankTwoToneIcon
-            fontSize="medium"
-            className="checkBox"
-          />
-        )}
-        &nbsp;&nbsp;{props.item}
-        {isHover && (
-          <button
-            className="deleteBtn"
-            onClick={(e) => {
-              props.deleteItem(props.id);
-              e.stopPropagation();
-            }}
-          >
-            <DeleteIcon fontSize="medium" />
-          </button>
-        )}
-      </li>
+        <li
+          style={
+            props.isStriked
+              ? { textDecoration: "line-through", color: "#7e8180" }
+              : {}
+          }
+        >
+          {props.isStriked ? (
+            <CheckBoxTwoToneIcon fontSize="medium" className="checkBox" />
+          ) : (
+            <CheckBoxOutlineBlankTwoToneIcon
+              fontSize="medium"
+              className="checkBox"
+            />
+          )}
+          &nbsp;&nbsp;{props.id} &nbsp;&nbsp;
+          {props.item}
+          {isHover && (
+            <button
+              className="deleteBtn"
+              onClick={(e) => {
+                props.deleteItem(props.id);
+                e.stopPropagation();
+              }}
+            >
+              <DeleteIcon fontSize="medium" />
+            </button>
+          )}
+        </li>
+      </article>
     </div>
   );
 }

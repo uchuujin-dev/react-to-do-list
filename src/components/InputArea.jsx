@@ -8,7 +8,8 @@ function InputArea(props) {
     const currentToDo = event.target.value;
     setToDo(() => {
       return {
-        item: currentToDo
+        item: currentToDo,
+        isStriked: false
       };
     });
   }
@@ -31,7 +32,7 @@ function InputArea(props) {
           type="text"
           value={toDo.item}
         />
-        <button type="submit" disabled={toDo ? false : true}>
+        <button type="submit" disabled={toDo.item ? false : true}>
           <AddBoxRoundedIcon fontSize="large" />
         </button>
       </form>
