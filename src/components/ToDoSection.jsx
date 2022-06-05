@@ -3,45 +3,42 @@ import ToDoItem from "./ToDoItem.jsx";
 import DeadlineHeading from "./DeadlineHeading";
 
 function ToDoSection(props) {
-  const [displayNoDeadlines, setDisplayNoDeadlines] = useState(true);
-  function toggleContent() {
-    setDisplayNoDeadlines(!displayNoDeadlines);
-  }
+  // const [displayNoDeadlines, setDisplayNoDeadlines] = useState(true);
+  // function toggleContent() {
+  //   setDisplayNoDeadlines(!displayNoDeadlines);
+  // }
 
   return (
     <div>
       <ul>
-        {props.deadlines &&
-          props.deadlines.map((deadline) => {
+        {props.toDoList &&
+          props.toDoList.map((obj) => {
             return (
               <div>
                 <DeadlineHeading
-                  id={props.deadlines.indexOf(deadline)}
-                  heading={deadline.deadline}
-                  toggleContent={props.toggleContent}
-                  isShowContent={deadline.displayContent}
+                  id={obj.id}
+                  heading={obj.deadline}
+                  setDisplayToDo={props.setDisplayToDo}
+                  isShowContent={obj.displayToDo}
                 />
-                {deadline.displayContent &&
-                  props.toDoList
-                    .filter((item) => {
-                      return item.deadline === deadline.deadline.toString();
-                    })
-                    .map((item, index) => {
-                      return (
-                        <ToDoItem
-                          key={item.item}
-                          item={item.item}
-                          id={props.toDoList.indexOf(item)}
-                          deleteItem={props.deleteItem}
-                          setIsStriked={props.setIsStriked}
-                          isStriked={item.isStriked}
-                        />
-                      );
-                    })}
+                {obj.displayToDo &&
+                  obj.toDo.map((itemObject) => {
+                    return (
+                      <ToDoItem
+                        key={itemObject.item}
+                        item={itemObject.item}
+                        itemObject={itemObject}
+                        id={obj.id}
+                        deleteItem={props.deleteItem}
+                        setIsStriked={props.setIsStriked}
+                        isStriked={itemObject.isStriked}
+                      />
+                    );
+                  })}
               </div>
             );
           })}
-        <DeadlineHeading
+        {/* <DeadlineHeading
           heading="No deadlines"
           id="noDeadlines"
           toggleContent={toggleContent}
@@ -63,7 +60,7 @@ function ToDoSection(props) {
                   setIsStriked={props.setIsStriked}
                 />
               );
-            })}
+            })} */}
       </ul>
     </div>
   );

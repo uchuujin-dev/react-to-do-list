@@ -5,11 +5,7 @@ function DeadlineHeading(props) {
     <section
       className="deadline"
       onClick={() => {
-        if (props.id === "noDeadlines") {
-          props.toggleContent();
-        } else {
-          props.toggleContent(props.id);
-        }
+        props.setDisplayToDo(props.id, props.heading);
       }}
     >
       <h2 style={props.isShowContent ? {} : { backgroundColor: "#2d373a" }}>

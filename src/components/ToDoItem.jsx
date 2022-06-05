@@ -9,7 +9,7 @@ function ToDoItem(props) {
   return (
     <div
       onClick={() => {
-        props.setIsStriked(props.id);
+        props.setIsStriked(props.id, props.itemObject);
       }}
     >
       <article
@@ -35,13 +35,12 @@ function ToDoItem(props) {
               className="checkBox"
             />
           )}
-          &nbsp;&nbsp;{props.id} &nbsp;&nbsp;
           {props.item}
           {isHover && (
             <button
               className="deleteBtn"
               onClick={(e) => {
-                props.deleteItem(props.id);
+                props.deleteItem(props.itemObject, props.id);
                 e.stopPropagation();
               }}
             >

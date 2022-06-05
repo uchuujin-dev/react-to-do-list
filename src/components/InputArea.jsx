@@ -27,21 +27,18 @@ function InputArea(props) {
   function handleChange(event) {
     const currentToDo = event.target.value;
     setToDo(() => {
-      console.log("inputArea", date);
-      console.log("todo", toDo);
-
-      if (date) {
-        return {
-          item: currentToDo,
-          deadline: date,
-          isStriked: false
-        };
-      } else {
-        return {
-          item: currentToDo,
-          isStriked: false
-        };
-      }
+      // if (date) {
+      //   return {
+      //     item: currentToDo,
+      //     deadline: date,
+      //     isStriked: false
+      //   };
+      // } else {
+      return {
+        item: currentToDo,
+        isStriked: false
+      };
+      // }
     });
   }
 
@@ -55,14 +52,12 @@ function InputArea(props) {
     <div className="form">
       <form
         onSubmit={(e) => {
-          props.handleAdd(toDo);
+          props.handleAdd(toDo.item, date);
           setToDo({
             item: "",
-            deadline: null,
             isStriked: false
           });
           setDate(null);
-          console.log(toDo);
           e.preventDefault();
         }}
       >
@@ -71,6 +66,7 @@ function InputArea(props) {
           onChange={handleChange}
           type="text"
           value={toDo.item}
+          placeholder="Add an item... (and a deadline!)"
         />
         <button
           className="addBtn"
