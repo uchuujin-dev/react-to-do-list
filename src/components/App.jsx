@@ -31,10 +31,10 @@ function App() {
       //     return null;
       //   }
       if (toDo.deadline)
-        return [...prev, { deadline: toDo.deadline, displayContent: true }];
-      // .filter((element, index, array) => array.indexOf(element) === index)
-      // .sort(sortDate)
-      // .filter((toDo) => toDo);
+        return [...prev, { deadline: toDo.deadline, displayContent: true }]
+          .filter((element, index, array) => array.indexOf(element) === index)
+          .sort(sortDate)
+          .filter((toDo) => toDo);
       return [...prev];
     });
   }
@@ -55,6 +55,9 @@ function App() {
   }
 
   function sortDate(a, b) {
+    if (b.deadline) {
+      return new Date(a.deadline) - new Date(b.deadline);
+    }
     if (b) {
       return new Date(a) - new Date(b);
     } else {
@@ -64,6 +67,7 @@ function App() {
 
   function deleteItem(id) {
     console.log("in deleteItem", id, toDoList[id]);
+    console.log(deadlines[0], deadlines[1]);
 
     setToDoList((prev) => {
       return prev.filter((item, index) => {
@@ -127,3 +131,28 @@ function App() {
 }
 
 export default App;
+
+// const state = [
+//   {
+//     id: "asdfs-121-sfaf",
+//     deadline: "2022-06-10",
+//     toDo: [
+//       { item: "shopping: get eggs", isStriked: true },
+//       { item: "write essay", isStriked: false }
+//     ]
+//   },
+//   {
+//     id: "sdfds-12321-fdsfs",
+//     deadline: "2022-06-12",
+//     toDo: [
+//       { item: "Meet friends", isStriked: false }
+//     ]
+//   },
+//   {
+//     id: "sfsas-1657-asfsa",
+//     deadline: "No deadline",
+//     toDo: [
+//       { item: "Order book", isStriked: true }
+//     ]
+//   }
+// ];
