@@ -6,7 +6,6 @@ function CalendarModal(props) {
   const [date, setDate] = useState();
 
   function convertDate(date) {
-    const formattedDate = new Date(date);
     return new Date(date.getTime() - date.getTimezoneOffset() * 60000)
       .toISOString()
       .split("T")[0];
@@ -33,12 +32,6 @@ function CalendarModal(props) {
             className="title-color"
             data-name="title"
             value="Select deadline date"
-            // onBlur={(event) => {
-            //   props.saveNote(props.id, event);
-            // }}
-            // onClick={() => {
-            //   setIsEditable(true);
-            // }}
           >
             Select deadline date
           </h2>
@@ -53,35 +46,13 @@ function CalendarModal(props) {
           backgroundColor: "#eee"
         }}
       >
-        {/* <p
-      style={{
-        height: "100%",
-        padding: "0.5rem"
-      }}
-      className="description-color"
-      onClick={() => {
-        setIsEditable(true);
-      }}
-      contentEditable={isEditable}
-      data-name="content"
-      onBlur={(event) => {
-        props.saveNote(props.id, event);
-      }}
-      value={props.content}
-    >
-      {props.content} &nbsp;
-    </p> */}
         <center>
           <Calendar
             minDetail="year"
             minDate={new Date()}
-            // nextLabel="month>>"
             nextAriaLabel="Go to next month"
-            // next2Label="year>>"
             next2AriaLabel="Go to next year"
-            // prevLabel="<<month"
             prevAriaLabel="Go to prev month"
-            // prev2Label="<<year"
             prev2AriaLabel="Go to prev year"
             value={date}
             onChange={setDate}

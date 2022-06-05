@@ -35,6 +35,7 @@ function ToDoItem(props) {
               className="checkBox"
             />
           )}
+          &nbsp;&nbsp;
           {props.item}
           {isHover && (
             <button

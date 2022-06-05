@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 
 import { Button } from "react-bootstrap";
@@ -9,36 +9,13 @@ function InputArea(props) {
   const [toDo, setToDo] = useState({});
   const [date, setDate] = useState();
 
-  useEffect(() => {
-    setToDo(() => {
-      if (date) {
-        return {
-          ...toDo,
-          deadline: date
-        };
-      } else {
-        return {
-          ...toDo
-        };
-      }
-    });
-  }, [date]);
-
   function handleChange(event) {
     const currentToDo = event.target.value;
     setToDo(() => {
-      // if (date) {
-      //   return {
-      //     item: currentToDo,
-      //     deadline: date,
-      //     isStriked: false
-      //   };
-      // } else {
       return {
         item: currentToDo,
         isStriked: false
       };
-      // }
     });
   }
 
