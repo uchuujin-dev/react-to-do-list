@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
-
 import { Button } from "react-bootstrap";
-
 import CalendarModal from "./CalendarModal";
 
 function InputArea(props) {
@@ -84,6 +82,5 @@ function InputArea(props) {
     </div>
   );
 }
-/// { item: "I'm first", deadline: "2022-01-02" },
 
 export default InputArea;

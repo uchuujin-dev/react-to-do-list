@@ -87,6 +87,7 @@ function App() {
       return 0;
     }
   }
+
   function deleteItem(oldToDo, objectId) {
     setToDoList((prev) => {
       let found = false;
@@ -141,6 +142,7 @@ function App() {
       });
     });
   }
+
   function setDisplayToDo(objectId, deadline) {
     setToDoList((prev) => {
       return [...prev].map((obj) => {
